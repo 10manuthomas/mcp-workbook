@@ -1,0 +1,34 @@
+[build-system]
+
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "usb-mcp-otel"
+version = "0.1.0"
+description = "A standardized OpenTelemetry wrapper for FastMCP servers"
+readme = "README.md"
+requires-python = ">=3.13"
+authors = [
+    { name = "USB Enterprice Platform Team" }
+]
+
+dependencies = [
+    "opentelemetry-distro",
+    "opentelemetry-exporter-otlp"
+]
+
+[project.optional-dependencies]
+fastmcp = [
+    "fastmcp>=3.0.0",
+]
+
+all = [
+    "usb-mcp-otel[fastmcp]"
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/usb_mcp_otel"]
+
+[tool.hatch.metadata]
+allow-direct-references = true
